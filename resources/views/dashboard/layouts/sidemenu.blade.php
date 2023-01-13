@@ -26,7 +26,12 @@
             </li>
              <li class="nav-item">
                 <a class="nav-link" href="{{ route('dashboard.settings') }}"><i class="fa fa-cog"></i>{{ __('words.settings') }}</a>
-                <a class="nav-link" href="#"><i class="fa fa-sign-out"></i>{{ __('words.logout') }}</a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                <button  class="nav-link"
+                style="background-color: transparent; margin-right:10px;border:0;color:white" >
+                <i class="fa fa-sign-out" style="margin-left: 10px"></i>{{ __('words.logout') }}</button>
+                </form>
             </li>
 
 

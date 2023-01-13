@@ -15,8 +15,12 @@ use App\Http\Controllers\Dashboard\SettingController;
 */
 Route::view('/test', 'dashboard.layouts.layout');
 
-Route::group(['prefix'=>'dashboard','as'=>'dashboard.'], function ()
+Route::group(['prefix'=>'dashboard','as'=>'dashboard.','middleware'=>['checkLogin']], function ()
 {
     Route::GET('/settings',[SettingController::class, 'index'])->name('settings');
     Route::PUT('/settings/{setting}',[SettingController::class, 'update'])->name('settings.update');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
