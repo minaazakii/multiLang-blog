@@ -1,7 +1,17 @@
 @extends('dashboard.layouts.layout')
 
 @section('content')
-    <form action="{{ route('dashboard.settings.update') }}" method="POST" enctype="multipart/form-data">
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+    <form action="{{ route('dashboard.settings.update',$setting) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="container mt-3">
@@ -13,32 +23,32 @@
                 <div class="card-block">
                     <div class="form-group col-sm-6">
                         <label for="company">Favicon</label>
-                        <input type="file" name="favicon" class="form-control" placeholder="Enter your company name">
+                        <input type="file" name="favicon" class="form-control">
                     </div>
 
                     <div class="form-group col-sm-6">
                         <label for="vat">Image</label>
-                        <input type="file" name="image" class="form-control"  placeholder="PL1234567890">
+                        <input type="file" name="image" class="form-control">
                     </div>
 
                     <div class="form-group col-sm-6">
                         <label for="street">Facebook</label>
-                        <input type="text" name="facebook" class="form-control"  placeholder="Enter street name">
+                        <input type="text" name="facebook" class="form-control" value="{{ $setting->facebook }}"  placeholder="Facebook">
                     </div>
 
                         <div class="form-group col-sm-6">
                             <label for="city">Instagram</label>
-                            <input type="text" name="instagram" class="form-control"  placeholder="Enter your city">
+                            <input type="text" name="instagram" class="form-control" value="{{ $setting->instagram }}"  placeholder="Instagram">
                         </div>
 
                         <div class="form-group col-sm-6">
                             <label for="postal-code">Email</label>
-                            <input type="text" name="email" class="form-control" id="postal-code" placeholder="Postal Code">
+                            <input type="text" name="email" class="form-control" value="{{ $setting->email }}" id="postal-code" placeholder="Email">
                         </div>
 
                         <div class="form-group col-sm-6">
                             <label for="postal-code">Phone</label>
-                            <input type="text" name="phone" class="form-control" placeholder="Postal Code">
+                            <input type="text" name="phone" value="{{ $setting->phone }}" class="form-control" placeholder="Phone">
                         </div>
 
                     <!--/row-->
@@ -70,20 +80,22 @@
                             id="{{ $key }}" role="tabpanel" aria-labelledby="home-tab">
                             <br>
                             <div class="form-group mt-3 col-md-12">
-                                <label>{{ __('words.title') }} - {{ $lang }}</label>
+                                <label>{{ $lang }}</label>
                                 <input type="text" name="{{$key}}[title]" class="form-control"
-                                    placeholder="{{ __('words.email') }}"   value="">
+                                      value="{{ $setting->translate($key)->title }}">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label>{{ __('words.content') }}</label>
-                                <textarea name="{{$key}}[content]" class="form-control" cols="30" rows="10"></textarea>
+                                <textarea name="{{$key}}[content]" class="form-control" cols="30" rows="10">
+                                    {{ $setting->translate($key)->content }}
+                                </textarea>
                             </div>
 
 
                             <div class="form-group col-md-12">
                                 <label>{{ __('words.address') }}</label>
-                                <input type="text"name="{{$key}}[address]" class="form-control"   value="">
+                                <input type="text"name="{{$key}}[address]" class="form-control" value="{{ $setting->translate($key)->address }}">
                             </div>
                         </div>
                     @endforeach

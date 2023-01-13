@@ -18,5 +18,5 @@ Route::view('/test', 'dashboard.layouts.layout');
 Route::group(['prefix'=>'dashboard','as'=>'dashboard.'], function ()
 {
     Route::GET('/settings',[SettingController::class, 'index'])->name('settings');
-    Route::PUT('/settings',[SettingController::class, 'update'])->name('settings.update');
+    Route::PUT('/settings/{setting}',[SettingController::class, 'update'])->name('settings.update');
 });

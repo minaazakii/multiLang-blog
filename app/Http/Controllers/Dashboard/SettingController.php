@@ -12,9 +12,17 @@ class SettingController extends Controller
     {
         return view('dashboard.setting');
     }
-    public function update(Request $request)
+    public function update(Request $request,Setting $setting)
     {
-        Setting::create($request->all());
+
+        foreach (config('app.languages') as $key => $lang)
+        {
+            $data[$key.'*.title'] = 'required';
+            $data[$key.'*.content'] = 'required';
+            $data[$key.'*.address'] = 'required';
+        }
+        $validated =  $request->validate($data);
+        $setting->update($request->except('image','favicon','_token'));
         return back();
     }
 }
