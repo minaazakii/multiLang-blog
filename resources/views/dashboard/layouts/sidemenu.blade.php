@@ -6,11 +6,11 @@
             </li>
 
             <li class="nav-title">
-               مدیریت کاربران
+                Users
             </li>
              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="icon-user-follow"></i> ثبت کاربر</a>
-                <a class="nav-link" href="#"><i class="icon-people"></i> لیست کاربران</a>
+                <a class="nav-link" href="#"><i class="icon-user-follow"></i> Add User</a>
+                <a class="nav-link" href="{{ route('dashboard.users.index') }}"><i class="icon-people"></i> Users List</a>
                 <a class="nav-link" href="#"><i class="icon-user-following"></i> دسترسی کاربران</a>
             </li>
 

@@ -58,7 +58,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->status = $request->status;
+        $user->save();
+        return redirect()->route('dashboard.users.index');
     }
 
     /**
