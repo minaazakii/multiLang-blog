@@ -24,6 +24,7 @@ class UserController extends Controller
     {
         $data = User::all();
         return DataTables::of($data)
+            ->addIndexColumn()
             ->addColumn('action', function ($user) {
                 return $btn = '
                 <a href="'. route('dashboard.users.edit', $user->id). '" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>

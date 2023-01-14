@@ -9,16 +9,16 @@
                 Users
             </li>
              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="icon-user-follow"></i> Add User</a>
+                <a class="nav-link" href="{{ route('dashboard.users.create') }}"><i class="icon-user-follow"></i> Add User</a>
                 <a class="nav-link" href="{{ route('dashboard.users.index') }}"><i class="icon-people"></i> Users List</a>
-                <a class="nav-link" href="#"><i class="icon-user-following"></i> دسترسی کاربران</a>
             </li>
 
             <li class="nav-title">
-               مدیریت فایل ها
+                 Categories
             </li>
              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="icon-docs"></i> لیست فایل ها</a>
+                <a class="nav-link" href="{{ route('dashboard.categories.index') }}"><i class="icon-docs"></i> Category List</a>
+                <a class="nav-link" href="{{ route('dashboard.categories.create') }}"><i class="icon-docs"></i> Create New Category</a>
             </li>
 
             <li class="nav-title">

@@ -37,10 +37,10 @@
         <table class="table table-striped" id="users_table">
             <thead>
                 <tr>
+                    <th style="text-align: right">Id</th>
                     <th style="text-align: right">Username</th>
-                    <th style="text-align: right">Date registered</th>
+                    <th style="text-align: right">Email</th>
                     <th style="text-align: right">Role</th>
-                    <th style="text-align: right">Status</th>
                     <th style="text-align: right"></th>
                 </tr>
             </thead>
@@ -97,7 +97,7 @@
         $('#deleteModal #id').val(id);
     });
 
- </script>
+</script>
 
 
 @endpush
