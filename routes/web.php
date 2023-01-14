@@ -18,12 +18,12 @@ use App\Http\Controllers\Dashboard\CategoryController;
 Route::view('/test', 'dashboard.layouts.layout');
 
 
-//Settings
+//Dashboard
 Route::group(['prefix'=>'dashboard','as'=>'dashboard.','middleware'=>['checkLogin']], function ()
 {
+    //Settings
     Route::GET('/settings',[SettingController::class, 'index'])->name('settings');
     Route::PUT('/settings/{setting}',[SettingController::class, 'update'])->name('settings.update');
-
 
     //User Route
     Route::GET('/users/all', [UserController::class, 'datatable'])->name('users.datatables');
@@ -32,12 +32,12 @@ Route::group(['prefix'=>'dashboard','as'=>'dashboard.','middleware'=>['checkLogi
 
     //Category Route
     Route::GET('/categories/all', [CategoryController::class, 'datatable'])->name('categories.datatables');
-    // Route::DELETE('/category/delete',[CategoryController::class, 'delete'])->name('category.delete');
+    Route::DELETE('/category/delete',[CategoryController::class, 'delete'])->name('category.delete');
     Route::resource('/categories', CategoryController::class);
 });
 
 
-//Auth Route
+//Auth Route[Login,Register,Logout]
 Auth::routes();
 
 

@@ -32,11 +32,10 @@ class CategoryController extends Controller
              })
         ->rawColumns(['action', 'title','parentRow'])
         ->make(true);
-        dd($table);
     }
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::where('parent_id', 0)->orWhere('parent_id',null)->get();
         return view('dashboard.categories.create',
         [
             'categories' => $categories
@@ -46,5 +45,20 @@ class CategoryController extends Controller
     {
         Category::create($request->except('image','_token'));
         return redirect()->route('dashboard.categories.index');
+    }
+    public function delete(Request $request)
+    {
+        Category::where('id',$request->id)->delete();
+        Category::where('parent_id',$request->id)->delete();
+        return redirect()->route('dashboard.categories.index');
+    }
+    public function edit(Category $category)
+    {
+        $categories = Category::where('parent_id', 0)->orWhere('parent_id',null)->get();
+        return view('dashboard.categories.edit',
+        [
+            'category' => $category,
+            'categories' => $categories
+        ]);
     }
 }
