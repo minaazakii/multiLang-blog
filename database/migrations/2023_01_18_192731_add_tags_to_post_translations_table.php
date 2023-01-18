@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('post_translations', function (Blueprint $table) {
+            $table->text('tags')->nullable();
         });
     }
 
@@ -27,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::table('post_translations', function (Blueprint $table) {
+            $table->dropColumn('tags');
+        });
     }
 };

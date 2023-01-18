@@ -22,6 +22,14 @@
             </li>
 
             <li class="nav-title">
+                 Posts
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="{{ route('dashboard.categories.index') }}"><i class="icon-docs"></i> Post List</a>
+                <a class="nav-link" href="{{ route('dashboard.categories.create') }}"><i class="icon-docs"></i> Create New Post</a>
+            </li>
+
+            <li class="nav-title">
                Dashboard Settings
             </li>
              <li class="nav-item">

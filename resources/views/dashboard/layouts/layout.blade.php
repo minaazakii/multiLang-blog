@@ -342,6 +342,21 @@
      <script src="//localhost:35729/livereload.js"></script>
      <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
      <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+     <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+     <script>
+
+        var allEditors = document.querySelectorAll('#editor');
+        for ( var i = 0; i < allEditors.length; i++ )
+        {
+            ClassicEditor
+            .create(allEditors[i] )
+            .catch( error => {
+                console.error( error );
+            } );
+        }
+
+    </script>
+
 
      @stack('scripts')
  </body>

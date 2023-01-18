@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\SettingController;
 use App\Http\Controllers\Dashboard\CategoryController;
@@ -34,6 +35,10 @@ Route::group(['prefix'=>'dashboard','as'=>'dashboard.','middleware'=>['checkLogi
     Route::GET('/categories/all', [CategoryController::class, 'datatable'])->name('categories.datatables');
     Route::DELETE('/category/delete',[CategoryController::class, 'delete'])->name('category.delete');
     Route::resource('/categories', CategoryController::class);
+
+    //Post Routes
+    Route::GET('/posts/all', [PostController::class, 'datatable'])->name('posts.datatables');
+    Route::resource('/posts', PostController::class);
 });
 
 
