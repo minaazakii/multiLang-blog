@@ -6,31 +6,31 @@
             </li>
 
             <li class="nav-title">
-                Users
+                {{ __('words.Users') }}
             </li>
              <li class="nav-item">
-                <a class="nav-link" href="{{ route('dashboard.users.create') }}"><i class="icon-user-follow"></i> Add User</a>
-                <a class="nav-link" href="{{ route('dashboard.users.index') }}"><i class="icon-people"></i> Users List</a>
+                <a class="nav-link" href="{{ route('dashboard.users.create') }}"><i class="icon-user-follow"></i> {{ __('words.Add User') }}</a>
+                <a class="nav-link" href="{{ route('dashboard.users.index') }}"><i class="icon-people"></i>{{ __('words.Users List') }}</a>
             </li>
 
             <li class="nav-title">
-                 Categories
+                 {{ __('words.Categories') }}
             </li>
              <li class="nav-item">
-                <a class="nav-link" href="{{ route('dashboard.categories.index') }}"><i class="icon-docs"></i> Category List</a>
-                <a class="nav-link" href="{{ route('dashboard.categories.create') }}"><i class="icon-docs"></i> Create New Category</a>
+                <a class="nav-link" href="{{ route('dashboard.categories.index') }}"><i class="icon-docs"></i>{{ __('words.Category List') }}</a>
+                <a class="nav-link" href="{{ route('dashboard.categories.create') }}"><i class="icon-docs"></i>{{ __('words.Create New Category') }}</a>
             </li>
 
             <li class="nav-title">
-                 Posts
+                 {{ __('words.Posts') }}
             </li>
              <li class="nav-item">
-                <a class="nav-link" href="{{ route('dashboard.categories.index') }}"><i class="icon-docs"></i> Post List</a>
-                <a class="nav-link" href="{{ route('dashboard.categories.create') }}"><i class="icon-docs"></i> Create New Post</a>
+                <a class="nav-link" href="{{ route('dashboard.categories.index') }}"><i class="icon-docs"></i>{{ __('words.Post List') }}</a>
+                <a class="nav-link" href="{{ route('dashboard.categories.create') }}"><i class="icon-docs"></i>{{ __('words.Create New Post') }} </a>
             </li>
 
             <li class="nav-title">
-               Dashboard Settings
+               {{ __('words.Dashboard Settings') }}
             </li>
              <li class="nav-item">
                 <a class="nav-link" href="{{ route('dashboard.settings') }}"><i class="fa fa-cog"></i>{{ __('words.settings') }}</a>

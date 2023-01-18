@@ -29,18 +29,19 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img src="img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                    <span class="hidden-md-down">مدیر</span>
+                    <img  class="img-avatar" alt="{{ auth()->user()->email }}[{{ auth()->user()->status }}]">
+                    <span class="hidden-md-down">{{ LaravelLocalization::getCurrentLocaleNative() }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header text-xs-center">
-                        <strong>تنظیمات</strong>
-                    </div>
-                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> پروفایل</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> تنظیمات</a>
-                    <!--<a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="tag tag-default">42</span></a>-->
-                    <div class="divider"></div>
-                    <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> خروج</a>
+                    <ul>
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+
+                                <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    <i class="fa fa-language"></i> {{ $properties['native'] }}
+                                </a>
+                        @endforeach
+                    </ul>
+
                 </div>
             </li>
             <li class="nav-item">
