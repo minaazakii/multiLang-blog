@@ -25,8 +25,8 @@
                  {{ __('words.Posts') }}
             </li>
              <li class="nav-item">
-                <a class="nav-link" href="{{ route('dashboard.categories.index') }}"><i class="icon-docs"></i>{{ __('words.Post List') }}</a>
-                <a class="nav-link" href="{{ route('dashboard.categories.create') }}"><i class="icon-docs"></i>{{ __('words.Create New Post') }} </a>
+                <a class="nav-link" href="{{ route('dashboard.posts.index') }}"><i class="icon-docs"></i>{{ __('words.Post List') }}</a>
+                <a class="nav-link" href="{{ route('dashboard.posts.create') }}"><i class="icon-docs"></i>{{ __('words.Create New Post') }} </a>
             </li>
 
             <li class="nav-title">

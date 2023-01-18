@@ -23,10 +23,15 @@ class PostController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($post)
             {
-                return  '
-                <a href="' . route('dashboard.categories.edit', $post->id) . '" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                <button type="button" id="deletebtn" data-id="' . $post->id . '" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                ';
+                if(auth()->user()->can('update',$post))
+                {
+                    return  '
+                    <a href="' . route('dashboard.categories.edit', $post->id) . '" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                    <button type="button" id="deletebtn" data-id="' . $post->id . '" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                    ';
+                } else
+                    return;
+
             })
             ->addColumn('title', function ($post)
             {
@@ -67,7 +72,10 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        Post::create($request->except('_token','_method'));
+        $post = Post::create($request->except('_token','_method'));
+        $post->user_id = auth()->id();
+        $post->update();
+        return redirect()->route('dashboard.posts.index');
     }
 
 
@@ -76,9 +84,9 @@ class PostController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $this->authorize('update', $post);
     }
 
     public function update(Request $request, $id)
